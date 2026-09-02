@@ -1,6 +1,6 @@
 # AspNetWebForms — Component Survey
 
-Low-level inventory of every part of this repository: what it is, what it does at runtime, and how it connects to the rest of the app. Written as groundwork for evaluating a Java 21 / Angular port — no migration recommendations here, just the as-is system.
+Low-level inventory of every part of this repository: what it is, what it does at runtime, and how it connects to the rest of the app. Written as groundwork for evaluating a Java 21 / Spring Boot / Angular port — no migration recommendations here, just the as-is system.
 
 ---
 
