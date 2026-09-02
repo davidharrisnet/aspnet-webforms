@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
+using System.Data.Entity;
 using System.Web;
 using System;
 using AspNetWebForms;
+using AspNetWebForms.Models;
 
 namespace AspNetWebForms
 {
@@ -18,6 +20,9 @@ namespace AspNetWebForms
             : base("DefaultConnection")
         {
         }
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 
     #region Helpers
@@ -25,6 +30,16 @@ namespace AspNetWebForms
     {
         public UserManager()
             : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
+        {
+        }
+    }
+
+    // ASP.NET Identity's role-based counterpart to UserManager above. Backed by the same
+    // AspNetRoles/AspNetUserRoles tables that IdentityDbContext<T> already defines.
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager()
+            : base(new RoleStore<IdentityRole>(new ApplicationDbContext()))
         {
         }
     }

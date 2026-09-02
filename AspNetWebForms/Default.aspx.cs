@@ -11,4 +11,10 @@ public partial class _Default : Page
     {
 
     }
+
+    protected void ClockTimer_Tick(object sender, EventArgs e)
+    {
+        // Nothing to do here - the ContentTemplate's <%: DateTime.Now %> re-evaluates on
+        // every render, so simply having Tick wired up is enough to trigger the refresh.
+    }
 }

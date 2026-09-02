@@ -8,6 +8,19 @@
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
     </div>
 
+    <%-- UpdatePanel + Timer: the classic "AJAX without writing JavaScript" pattern. Every
+         Interval ms, the Timer's Tick event fires an async postback that re-renders only
+         the ContentTemplate below, via the ScriptManager already declared in Site.master. --%>
+    <asp:UpdatePanel runat="server" ID="ClockPanel" UpdateMode="Always">
+        <ContentTemplate>
+            <p>Server time (auto-refreshes via UpdatePanel + Timer, no full page postback): <strong><%: DateTime.Now.ToString("T") %></strong></p>
+        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="ClockTimer" EventName="Tick" />
+        </Triggers>
+    </asp:UpdatePanel>
+    <asp:Timer runat="server" ID="ClockTimer" Interval="5000" OnTick="ClockTimer_Tick" />
+
     <div class="row">
         <div class="col-md-4">
             <h2>Getting started</h2>
